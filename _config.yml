@@ -121,6 +121,4 @@ popular_posts: 10
 
 lunr_search: false
 simple_search: http://google.com/search
-#layout: null
-layout: nil
 
