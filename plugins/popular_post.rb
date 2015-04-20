@@ -76,7 +76,7 @@ module OctopressPlugin
       def initialize(max_results = 10)
         @max_results = max_results
         @cache_disabled = false
-        @cache_path = File.expand_path('~/blog/octopress/.analytics-cache', File.dirname(__FILE__))
+        @cache_path = File.expand_path('../.analytics-cache', File.dirname(__FILE__))
       end
 
       def get_score(url)
