@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="ja"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>厳格 - MBA-HACK2</title>
+  <meta name="author" content="syui">
+
+  
+  
+<meta name="google-site-verification" content="JkNswpm6rjgiXwpuzePnVWNEHTHNpZxsUdsoavMAcfU" />
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://syui.github.io/blog/2014/12/29/severe-private/" />
+  <link rel="canonical" href="https://syui.github.io/blog/2014/12/29/severe-private">
+  <link href="https://syui.github.io/favicon.ico" rel="icon">
+  <link href="/atom.xml" rel="alternate" title="MBA-HACK2" type="application/atom+xml">
+
+  <link href="https://syui.github.io/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="https://syui.github.io/assets/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+<link href="https://syui.github.io/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link rel="apple-touch-icon" href="https://syui.github.io/images/favicon.png" />
+<link href="https://syui.github.io/favicon.ico" rel="icon">
+<link href="/stylesheets/appbox.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="https://syui.github.io/stylesheets/appbox.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="https://syui.github.io/stylesheets/appbox.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://syui.github.io/javascripts/jquery.hotkeys.js"></script>
+<link href="/stylesheets/data-table.css" rel="stylesheet" type="text/css" />
+<script src="https://syui.github.io/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="https://syui.github.io/javascripts/jquery.githubRepoWidget.min.js"></script>
+
+  <script type="text/javascript">
+    var enforce = "syui.github.io";
+    if ((enforce == window.location.host) && (window.location.protocol != "https:"))
+      window.location = window.location.toString().replace(/^http:/, "https:");
+  </script>
+
+
+<script>
+  $.noConflict()
+</script>
+
+  <link rel="stylesheet" href="/octicons/octicons.css">
+  <link rel="stylesheet" href="/fonts/icomoon.css">
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "https://syui.github.io",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://syui.github.io/search/?q={q}",
+      "query-input": "required name=q"
+    }
+  }
+</script>
+
+</head>
+
+  <body   >
+    <div id="wrap">
+      <header role="banner">
+        <nav class="navbar navbar-default" role="navigation">
+
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://syui.github.io/">MBA-HACK2</a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active">
+        <a href="https://syui.github.io/"><span class="icon-phoenix-logo"></span></a>
+        </li>
+
+        <li >
+        <a href="https://syui.github.io/blog/archives">Archives</a>
+        </li>
+
+        <li class="dropdown">
+          <a href="https://syui.github.io/middleman/" class="dropdown-toggle" >Pages <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="https://syui.github.io/middleman/">Middleman</a></li>
+          <li><a href="https://syui.github.io/gitbook/">GitBook</a></li>
+          <li><a href="http://syui__.bitbucket.org/">Hexo</a></li>
+          <li><a href="https://syui.github.io/lanyon-hugo/">Hugo</a></li>
+          <li><a href="https://syui.github.io/novel/">Novel-Normal</a></li>
+          <li><a href="https://syui.github.io/code-guide/">Novel-Material</a></li>
+        </ul>
+        </li>
+
+        <li class="dropdown">
+        <a href="https://syui.github.io/blog/categories/tips/" class="dropdown-toggle" >Tips <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="https://syui.github.io/blog/2014/04/11/macbookair">MacBook</a></li>
+          <li><a href="https://syui.github.io/blog/2014/03/26/blog-customize">Octopress</a></li>
+          <li><a href="https://syui.github.io/blog/2014/08/02/file-rename-cli">Script</a></li>
+          <li><a href="https://syui.github.io/blog/2014/06/03/iphone">iPhone</a></li>
+          <li><a href="https://syui.github.io/blog/2014/06/03/android">Nexus7</a></li>
+          <li><a href="https://syui.github.io/blog/2014/06/03/amazon">Amazon</a></li>
+        </ul>
+        </li>
+
+        <li class="dropdown">
+        <a href="https://syui.github.io/blog/categories/tool/" class="dropdown-toggle" >Tool <b class="caret"></b></a>
+
+        <ul class="dropdown-menu">
+          <li><a href="https://syui.github.io/blog/2014/06/15/airgoogleplus/">airgoogleplus</a></li>
+          <li><a href="https://syui.github.io/blog/2014/06/12/airchrome/">airchrome.zsh</a></li>
+          <li><a href="https://syui.github.io/blog/2014/06/25/vim-plugin-airsave/">airsave.vim</a></li>
+          <li><a href="https://syui.github.io/blog/2014/06/19/airindent-dot-vim/">airindent.vim</a></li>
+          <li><a href="https://syui.github.io/blog/2014/06/16/icon/">octopress-share-button</a></li>
+          <li><a href="https://syui.github.io/middleman/blog/2014/01/01/example-article.html">middlemap-simple-tempate</a></li>
+          <li><a href="https://syui.github.io/hugo-theme-air">hugo-theme-air</a></li>
+        </ul>
+        </li>
+
+        <li ><a href="https://syui.github.io/about">About</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+        <a class="subscribe-rss" href="https://twitter.com/syui__" target="_blank" title="subscribe via Twitter">
+          <span class="visible-xs">Twitter</span>
+          <span class="hidden-xs"><span class="icon-twitter"></span></span>
+        </a>
+        </li>
+        <li>
+        <a class="subscribe-rss" href="/atom.xml" title="subscribe via RSS">
+          <span class="visible-xs">RSS</span>
+          <span class="hidden-xs"><span class="icon-feed"></span></span>
+        </a>
+        </li>
+
+        
+      </ul>
+      
+      <form action="https://syui.github.io/search" target="_blank" class="search navbar-form navbar-right">
+        <input type="text" name="q">
+      </form>
+      
+
+
+
+    </div>
+  </div>
+</nav>
+
+
+      </header>
+      <div id="main" class="container">
+        <div id="content">
+
+          <div class="row">
+  <div class="page-content col-md-9">
+
+<br><br>
+    <article class="hentry" role="article">
+      
+  <header class="page-header">
+    
+
+      <p class="meta text-muted text-uppercase">
+       <span class="meta_data_head">
+
+
+
+
+
+
+
+
+
+
+
+<time datetime="2014-12-29T00:00:00+00:00" pubdate data-updated="true"></time></span>
+        
+         <span class="disqus_head"><a href="#disqus_thread"
+            data-disqus-identifier="https://syui.github.io">Comments</a></span>
+        
+      </p>
+    
+    
+    <h1 class="entry-title">
+        厳格
+        
+    </h1>
+    
+  </header>
+
+
+<div class="entry-content clearfix">
+    <div id="toc-container"><table class="toc" id="toc"><tbody><tr><td>
+<div id="toctitle"><h3>Contents</h3></div>
+<ul>
+<li class="toc_level-1 toc_section-1"><a href="#tocAnchor-1-1"><span class="tocnumber">1</span> <span class="toctext">この記事について</span></a></li>
+<li class="toc_level-1 toc_section-2">
+<a href="#tocAnchor-1-2"><span class="tocnumber">2</span> <span class="toctext">本編</span></a><ul>
+<li class="toc_level-2 toc_section-3"><a href="#tocAnchor-1-2-1"><span class="tocnumber">2.1</span> <span class="toctext">成功と運</span></a></li>
+<li class="toc_level-2 toc_section-4"><a href="#tocAnchor-1-2-2"><span class="tocnumber">2.2</span> <span class="toctext">言い訳と運</span></a></li>
+<li class="toc_level-2 toc_section-5"><a href="#tocAnchor-1-2-3"><span class="tocnumber">2.3</span> <span class="toctext">責任の所在</span></a></li>
+<li class="toc_level-2 toc_section-6"><a href="#tocAnchor-1-2-4"><span class="tocnumber">2.4</span> <span class="toctext">厳しさと甘さ</span></a></li>
+<li class="toc_level-2 toc_section-7"><a href="#tocAnchor-1-2-5"><span class="tocnumber">2.5</span> <span class="toctext">思考の経路</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></tbody></table></div>
+<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">今回は、厳しさについてです。<!--more--><br clear="all"></p>
+
+<h2 id="tocAnchor-1-1">この記事について</h2>
+
+<p>前回、運の話をしたかと思いますが、その時、本当に書きたかったことというのは、運についてではなく、ここで書くようなことを書きたかったというのがあります。</p>
+
+<p>したがって、この記事は、前回の続きのようなものになります。つまり、リンクですね。ここで言うリンクというのは、関連してる、つながってるという意味です。</p>
+
+<p>このブログでは書き忘れていましたが(旧ブログでは説明したことがありましたが)、私の書く記事というのは、記事中や記事間でこのリンクというものを多用する傾向にあります。</p>
+
+<p>なので、気づいたら、あー、これはリンクだなとか思ってもらえると、嬉しいです。そのほうが分かりやすいし、理解しやすいと思うからです。そして、通常、何らかの記事というのは、多くに自分の考えや想いを伝えることにあると考えています。</p>
+
+<p>ちなみに、こういう試みは、割りと気まぐれで行っていまして、計算されたものもあれば、計算されてないものもあり、かつ計算されていない場合が多いでしょう。</p>
+
+<p>この記事についても、本来なら前回の記事だけで事足りると自分では思っていたのですが、少し分かりにくかったかなとも思ったので、この記事を書くことにしました。</p>
+
+<h2 id="tocAnchor-1-2">本編</h2>
+
+<h3 id="tocAnchor-1-2-1">成功と運</h3>
+
+<p>皆さんは、運と成功の因果関係について、どのように考えているでしょうか。</p>
+
+<p>これについては、不運を背負った者は絶対に成功することができないという考え方や、運は有利条件ではあるが、絶対条件ではないという考え方があります。</p>
+
+<p>私の考えは、どちらかと言うと、後者の考えに近いかもしれませんね。</p>
+
+<p>では、このように考える理由を具体的に説明していきたいと思います。</p>
+
+<p>ここで、一番わかり易い例は、一般的な成功者を見ていくのが一番わかり易いと思います。したがって、ここでは、ジョブズを引き合いに出して考えてみることにします。</p>
+
+<p>彼は、Appleの成功に大きく貢献した人物と言われており、一般的には成功者として認識されていると思われます。</p>
+
+<p>しかし、彼の若いころの苦労や病気が原因であまり長く生きられなかったことなどを考慮すると、彼が強運の持ち主だったのかどうかについては評価が分かれそうだと思います。</p>
+
+<p>この点、病気は運とは関係ないだろうと考えている人もいるかと思いますが、以下のような記事が出ていました。</p>
+
+<p><a href="http://www.afpbb.com/articles/-/3035527" target="_blank">がんの原因、遺伝や環境でなく「不運」が大半</a></p>
+
+<p>私の考えについては、病気と運の因果関係は、微妙なところだなあと思っています。しかし、ある程度の運要素は介入してくる可能性も高いのではないかと考えていました。</p>
+
+<p>実は、一般的な成功者と呼ばれている人達の中には、病気で早くに亡くなってしまった人たちも多くいます。</p>
+
+<p>したがって、運が悪い人間は絶対に成功することができないなどと考える必要性は全くないと私は思っています。</p>
+
+<p>これは、個人的な立場を抜きにしても、そう思います。</p>
+
+<p>そして、運について考えていく上で、重要なのは、もしかしたら、この辺かもしれないなと私は考えています。</p>
+
+<h3 id="tocAnchor-1-2-2">言い訳と運</h3>
+
+<p>ここで、運気を上げるには、言い訳をしないことだという考えを見かけましたので、少しだけ、このような考えについても補足しておこうかなと思います。</p>
+
+<p>私が出した答えは、もし運という要素をコントロールできるとするならば、もしくは、一般的に運要素と考えられているものを上昇させるたいのなら、その方法は、「運について一切気にしないこと」でした。</p>
+
+<p>したがって、言い訳をしなければ運は良くなるという考えは、私に出てきた答えとは、少し、いや、全く異なることになります。</p>
+
+<p>ここで、「運について一切気にしないこと」というのは、具体的には、運を気にせず、考えず、それを当てにしないというような表現が一番わかり易いのではないかと思います。</p>
+
+<p>ちなみに、ここで私がイメージしたのは、きこりの泉という童話です。答えが出てきた後にイメージしたわけですが。</p>
+
+<p>例えば、女神があなたに問いかけます。「あなたは、幸運を欲していますが、それを手に入れるにはどうすれば良いと思いますか?」と。ここで、「言い訳をしないことです」と答えるよりも、「運について考えないことです」と答えるほうがしっくり来ました。</p>
+
+<p>もちろん、私と異なる考え方もたくさんありますし、それらを批判するつもりもありません。また、それらが間違っているとも思いません。それに、言い訳をしないことで、状況が好転する確率が上昇するとも思えますので、基本的には、良いことだと思っています。</p>
+
+<p>したがって、上記では、この点についての、私に出てきた答えというか、考えを説明したに過ぎません。</p>
+
+<p>しかし、私の考えと他の考えには、大きく異なる点が一点だけ存在しするような気がします。</p>
+
+<p>そして、今回の記事には、その要素が非常に重要になって来ることになります。</p>
+
+<p>重要というのは、この記事で伝えたい本質は、まさに、この辺りの話だということを頭に入れておいてください。</p>
+
+<h3 id="tocAnchor-1-2-3">責任の所在</h3>
+
+<p>何故、私は、言い訳をしないことが適切な答えではないと考えるのでしょう。</p>
+
+<p>実は、言い訳をしないという考えは、とても厳しい考え方になることが通常だと私は思っています。</p>
+
+<p>厳しい考え方というのは、それを他人にも当てはめてしまいがちだということです。</p>
+
+<p>具体的には、言い訳をしないことを良しとする考えは、自分だけでなく、幸運なものや不幸なものを見かけた際、「あいつは運が悪い、いつも言い訳ばかりしてるからだ、けしからん」とか、「言い訳ばかりだ。あいつの運は、必ず悪くなるだろう」とかそう言った想念を自分の中に発生させ続けてしまう危険が高いということです。</p>
+
+<p>そうですね。こういった想念は、自分の運を下げることにつながりかねないと私は思います。</p>
+
+<p>なぜ運が下がるのかを簡単に説明しますと、「これも一つの言い訳であるから」というのが、このように考える人達には最も説得的です。</p>
+
+<p>例えば、本当に言い訳をしない人がどういう人なのかというと、世の中で起こった全ての出来事を自分の責任と考える人を言います。ここで、中途半端に言い訳をする人というのは、他人のミスや不幸を個人責任として置き換えてしまいます。</p>
+
+<p>つまり、「あいつが不幸なのは、あいつのせいだ」というわけなのです。これは、ありとあらゆる考え方の根本的なものの一つだと思われます。ちなみに、本当に言い訳をしない人は「あいつが不幸なのは、俺のせいだ」と言います。</p>
+
+<p>具体的には、「罪を憎んで、人を憎まず」という言葉があるように、基本的にあらゆる不幸を個人責任にする傾向にあるか、全体責任にする傾向があるかという、人間の本質に関わる問題なのだと思います。</p>
+
+<p>そして、私は、基本的に後者の考え方をする人間であり、世の中を良くしていくには、すべての責任を個人に押し付けて終わりとするのではなく、全体で受け止めていくほうが、それに資するのではないかと考えているからです。</p>
+
+<p>確かに、犯罪者がした行為は、感情的には許せないと思うことも多いです。</p>
+
+<p>しかし、もし自分が同じ環境で、同じ境遇であったならば、と考えると、人間というちっぽけな存在は、環境や境遇に逆らうことが難しいので、大きな原因はそこにあるのではないかということです。</p>
+
+<p>したがって、その点を改善しなければ、いくら個人に責任を帰結しても、世の中は良くならないであろう、というのが私の考えであり、これが全体責任的な考えです。</p>
+
+<p>少し話がそれてしまいましたね。</p>
+
+<p>しかしこれらは、いわば人間の本質に関わる部分なので、どちらの考え方をするのかで、多くのテーマにおいて、その人が出す答えというのが、おおよそ予測できるものであったりします。</p>
+
+<p>これを、ここでは「人の本質」という言葉で言い表しています。</p>
+
+<p>どのような人間にも、一種の生まれ持った傾向や特徴があるのが一般です。そして、その根幹部分を把握することで、大体のテーマにおいてその人が取りうる結論や考え方が予測できるのです。</p>
+
+<p>そして、このような人の本質に関わる考え方の違いにおいては、これをいくら部分的に捻じ曲げようとしても、通常は、また戻ってきてしまうものなので、自身の本質を、考え方を、想いを、感情を変更することは、基本的には困難を極めるだろうと思われます。</p>
+
+<p>なので、無理して捻じ曲げても良い結果にならない事が多いです。</p>
+
+<p>したがって、ここで挙げた無意識中に選ばれるであろう本質、考え方の違いなどの問題は、どちらが良いと思っていても、自分を無理に捻じ曲げる必要性は全くありません、と考えます。</p>
+
+<p>ただ、自分の本質がどちらなのか、その点だけは認識しておくほうが良いのではないかと思いますので、この話をしました。</p>
+
+<h3 id="tocAnchor-1-2-4">厳しさと甘さ</h3>
+
+<p>ここで、自分に厳しいのは良いですが、他人にも厳しくしてしまう、考えてしまうのは、私は基本的には良くないことだと思っています。</p>
+
+<p>これも、どちらが良いかという問題ではなく、ある意味、私の基準で、良し悪しを判断したものになります。</p>
+
+<p>ここで、具体的な判断基準を完結に説明しておくと、「世の中が良くなる確率が高いのは、どちらの世界か」というような感じのものになっています。これについて、詳しくは後述します。</p>
+
+<p>そして、私の中には、このような考えを基本として優先順位のようなもの設定しています。</p>
+
+<table>
+<thead>
+<tr>
+<th>順位</th>
+<th> 自分に対して </th>
+<th> 他人に対して</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> 1位 </td>
+<td> 厳しい</td>
+<td>甘い</td>
+</tr>
+<tr>
+<td> 2位 </td>
+<td> 厳しい </td>
+<td> 厳しい</td>
+</tr>
+<tr>
+<td> 2位 </td>
+<td> 甘い </td>
+<td> 甘い</td>
+</tr>
+<tr>
+<td> 3位 </td>
+<td> 甘い </td>
+<td> 厳しい</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>ここで、例えば、2位が二つあります。</p>
+
+<p>自分に厳しい人間は、他人にも厳しくなりがちだし、自分に甘い人間は、他人にも甘くなりがちだというわけですね。</p>
+
+<p>そして、一番多いのは、多分、この2つのタイプの人々だろうと私は予想しています。なぜなら、人というのは、基本的に自分中心でしか物事を考えられないし、当てはめられないからです。この表を数で表すと、ダイヤのような形を形成します。</p>
+
+<p>しかし、あえて、順位を付けるとすれば、私は、厳しい人よりも、甘い人のほうが好きです。</p>
+
+<p>では、何故、厳しい人間よりも甘い人間のほうが順位が高いかというと、1位に変化する可能性が高いのは、甘い人間の方だと考えるからです。</p>
+
+<p>自分に厳しい人間が他人に甘くするのは、基本的に難しいことです。なぜなら、思考が硬い傾向にあるからだと思われます。</p>
+
+<p>ここで、性格や人格のような心の問題は、割りと簡単に考えられている印象を受けますが、肉体を変化させることと同じく、心を変化させることも相当難しいと私は考えています。</p>
+
+<p>一度固まった本質は容易に変化させることは、基本的にはできません。</p>
+
+<p>これを心の問題だからなんとかなるだろう、どうとでもできるだろうと考えるのは間違いだと思っています。例えば、私は、年齢の話をするのはあまり好きではありませんが、年齢が高くなればなるほど、自分の本質を変化させることは難しくなってくるだろうと考えています。</p>
+
+<p>なぜなら、十数年もの歳月をかけて形成され、硬化されてきたものを、簡単にどうこうできるとは思えないからです。基本的にはですが。</p>
+
+<p>だから、自分に厳しい人が、他人に優しくできるようになることは、…多分、ないです。私は見たことがない。</p>
+
+<p>しかし、甘い人間が、自分に厳しくなった例はいくつか確認しているような気がします。この場合は、個人的な基準で言うと、2位から1位に昇華したことを意味します。</p>
+
+<h3 id="tocAnchor-1-2-5">思考の経路</h3>
+
+<p>例えば、個人的な話になりますが、私は、実は、日課というものをやっていまして、その内容は、ランニング5km(実際はもっと長い)、腕立て、腹筋、スクワットを各200回(計600回)などを毎日行なうことを自分で決めて実行してたりします。</p>
+
+<p>これは、まあ、自分で決めたことですし、毎日です。</p>
+
+<p>毎日というのは、雨が降った日も、雪の日も、暑い日も、寒い日も、風邪を引いても、私は、走ります。いや、正確に言うなら、走ってきました。</p>
+
+<p>これは、上記に挙げた筋トレでも同じことです。毎日っていうのは、そういうことです。</p>
+
+<p>風引いた時なんかは、学校休んだりしてたので、見つかったらどうしようとか、ちょっと思ったりしたこともあったわけですが、まあ、そういう日も走ってきました。</p>
+
+<p>しかし、私は、自分がやってることだからといって、こういうことを他人に勧めたり、やらないとダメだとか思ったりしたことは一度もありません。毎日やれとも思いません。</p>
+
+<p>あなたは、人に導かれたことがある時、それは、厳しい言葉でしたか、優しい言葉でしたか。私は、厳しい言葉よりも、優しい言葉の時のほうが多かったかなと思います。</p>
+
+<p>また、例えば、ドラマとか映画とかで、拷問シーンとかってありますよね。私は、24という海外ドラマをイメージしてるわけですが、そこで、プロが言うには、「どれほど強い人間でも、いずれは折れる。時間の問題だ」らしいです。</p>
+
+<p>例えが極端ですが、私などは、すぐに折れてしまいそうな気がします。</p>
+
+<p>では、いつも厳しいことを言ってる人は、どうでしょう。</p>
+
+<p>プロを言うことを真に受けるとするならば、やっぱり、いつかは折れるもんなんじゃないかという気がします。</p>
+
+<p>私自身、走り出す前に、今日はなんか乗り気がしないなーと思ったり、そういうことは心のなかではたくさんあったりします。</p>
+
+<p>したがって、実行できる人と、実行できない人の違いは、ほんの些細なことでしかないのだと思います。</p>
+
+<p>そして、私も、今のところは、毎日走れたりしてますが、これをいつ止めてしまうのか、または、できなくなるのかは分かりません。</p>
+
+<p>ただ、そういった時は、体がダメになるのではなく、心が折れた時に、ダメになるんだろうなという気はすごくします。</p>
+
+<p>というのも、例えば、ランニングですが、一番キツイ時は、実は、心が重い時だったりします。</p>
+
+<p>それは、風邪を引いた時でもなく、天候が最悪の時でもありません。一番きついのは、精神的ダメージを負っている時です。</p>
+
+<p>私は、風邪引いた時は、あと1/3という所で体が重くなりました(正確に言うと、死にそうになったというのが、適切な表現かもしれません)が、精神的ダメージがあるときは、1/2で体が重くなりました。</p>
+
+<p>だから、私は、心が折れた時に、毎日やるって決めてたことをやめてしまうんだろうなと、そう考えています。</p>
+
+<p>私自身は、ずっと続けるつもりではいるわけだけど、いつかは、折れるんだろうなとも思っているのです。</p>
+
+<p>次に、過去の話をしてみます。これまでは未来の話でした。</p>
+
+<p>私は、ランニングを始めたばかりの時、毎日完璧に走れたわけではありません。通常は、最初から完ぺきにできる事のほうが少ないからです。そして、これは、自分に厳しい人も同じだろうと考えています。</p>
+
+<p>そんな過去を忘れて、他人にだけ厳しく当たるというのは、やはり、今の自分のことを忘れてしまったのだと感じることがあります。そして、それを他人にも強制的に当てはめて、キツイ考え方をしてしまうことが多いのだと思われます。</p>
+
+<p>このような時、厳しい人の言葉は、あまり役にも立たず、心にも届かないことが多いような気がしています。</p>
+
+<p>「甘ったれるな」、「お前は弱い」、「ダメなやつだ」、他人に厳しい人というのは、そういうことを言ったりするわけだけど、それはほとんど意味が無いし、良くないなと思っています。</p>
+
+<p>なぜなら、そういう人達ばかりの世界って、凄く息苦しいと思うからです。想像してみても、やっぱり楽しくないのですね。</p>
+
+<p>私自身、失敗したこと、3日坊主だったこと、挫折したことも数多く、これは、他の人も変わらないと思うのだけど、他人に厳しい人って、そういった自分のことは、忘れてしまったのかな。自分がいつか折れてしまう可能性を想像できないのかな。この違いって、一体何なのだろうと思うのです。</p>
+
+<p>しかし、既に答えは出ていて、それは本質という言葉で表現されます。</p>
+
+<p>一言で言うと、本質が違うだけということになります。</p>
+
+<p>私は、自分には厳しくてもいいけど、他人にまで厳しくする必要は全くないと考えています。</p>
+
+<p>したがって、これが、私の「運を気にしない」という考えと「言い訳しない」という他の考えの一番の違いに直結する部分かなと思います。</p>
+
+</div>
+
+
+      <footer>
+        <p class="meta text-muted">
+          
+  
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </p>
+        
+
+<span class="categories">
+  
+    <a class='category' href='https://syui.github.io/blog/categories/private/'>private</a>
+  
+</span>
+
+
+        <span class="octicon octicon-chevron-right" style="font-size:20px;"></span> 
+
+
+
+
+        
+          
+<div class="share_button_syui">
+  <a href="http://b.hatena.ne.jp/add?mode=confirm&url=https://syui.github.io/blog/2014/12/29/severe-private/&title=厳格" target="_blank"><span class="hatena-name"><span class="icon-hatena"
+style="float: left;
+font-size: 20px;
+padding-left: 5px;"
+>B!</span> Bookmark </span></a>
+  <a href="https://twitter.com/share?url=https://syui.github.io/blog/2014/12/29/severe-private/&text=厳格&via=syui__" target="_blank"><span class="twitter-name"><span class="icon-twitter"
+style="float: left;
+font-size: 20px;
+padding-left: 5px;
+color: #fff;"
+></span> Tweet </span></a>
+  <a href="https://plus.google.com/share?url=https://syui.github.io/blog/2014/12/29/severe-private/" target="_blank"><span class="googleplus-name"><span class="icon-googleplus"
+style="float: left;
+font-size: 20px;
+padding-left: 5px;
+color: #fff;"
+></span> +1 </span></a>
+  <a href="http://feedly.com/i/subscription/feed/https://syui.github.io/atom.xml" target="_blank"><span class="feedly-name"><span class="icon-feed"
+style="float: left;
+font-size: 20px;
+padding-left: 5px;
+color: #fff;"
+></span> Feedly </span></a>
+</div>
+
+
+
+        
+        
+   
+      <section>
+        <h1>Comments</h1>
+        <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+      </section>
+    
+
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="https://syui.github.io/blog/2014/12/28/google-analytics-2014/" title="Previous Post: Google Analytics API"><span class="octicon octicon-chevron-left" style="font-size:50px"></span></a></li>
+            
+
+            <li><a href="https://syui.github.io"><span class="icon-phoenix" style="font-size:50px"></span></a></li>
+            
+            <li class="next"><a href="https://syui.github.io/blog/2015/01/01/comic-2014/" title="Next Post: 最近買ったコミックをまとめてレビューします"><span class="octicon octicon-chevron-right" style="font-size:50px"></span></a></li>
+            
+          </ul>
+        
+
+      </footer>
+    </article>
+  </div>
+  
+  <aside class="sidebar col-md-3">
+    
+      
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">Recent Posts</div>
+  </div>
+  
+  <div id="recent_posts" class="list-group">
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2016/01/23/archlinux-docker-wine/">archlinux-docker-wine</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2016/01/19/vim-easymotion-v3/">vim-easymotion-v3</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2016/01/17/mac-vim-karabiner-japanese-ime/">mac-vim-karabiner-japanese-ime</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2015/12/18/wercker-github-branch-build/">wercker-github-branch-build</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2015/12/18/hubot-slack/">heroku-hubot-slack</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2015/12/07/golang-web-scraping/">golang-web-scraping</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2015/11/22/google-authenticator-yahoo/">google-authenticator-yahoo</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2015/11/17/comic-walker-screenshot/">comic-walker-screenshot</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2015/11/13/mmm-make-video-01/">mmm-make-video-01</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2015/11/12/mmm-mikumikumoving-appearance-miku/">mmm-mikumikumoving-appearance-miku</a>
+    
+  </div>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">Popular Posts</div>
+  </div>
+  <div id="recent_posts" class="list-group">
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2015/01/08/hugo-github-pages/">サイトジェネレーターのHUGOを使ってみた</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2015/02/01/archlinux-usb-install/">ArchLinuxをUSBにインストールして持ち運ぶ</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2015/01/28/android-5-dot-0-2-nexus7-root/">Nexus7(2012)をAndroid5.0.2にアップデートしてみた</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2014/07/24/archlinux-macbook-touchpad/">Arch LinuxのTouchPadを快適にする設定</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2015/03/02/windows-msys2-zsh/">WindowsでMSYS2を使う</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2014/10/25/comic-conan-83/">名探偵コナンの黒幕推理</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2014/07/24/archlinux-font-chromium/">Arch LinuxのChromiumが文字化けする</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2015/01/25/coreos-docker-rocket/">Vagrant上のCoreOSでRocketを使う</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2015/01/30/archlinux-gtk-theme/">ArchLinuxのデスクトップをカスタマイズしてみた</a>
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/2014/07/15/archlinux-in-macbook/">私がMacBookAirにArchLinuxを入れた理由</a>
+    
+  </div>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">Qiita</div>
+  </div>
+  <a class="qiita-timeline" href="https://qiita.com/users/syui" data-qiita-username="syui">syui</a><script src="https://syui.github.io/javascripts/qiita.js"></script>
+</section>
+
+
+
+
+
+<section class="panel panel-default clearfix">
+  <div class="panel-heading">
+      <div class="panel-title">GitHub Repos</div>
+  </div>
+  <div class="list-group" id="gh_repos">
+    <p class="loading">Status updating&#8230;</p>
+  </div>
+  
+    <div class="gh-profile-link pull-right text-muted">
+      <a href="https://github.com/syui">syui</a> on GitHub
+    </div>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'syui',
+            count: 10,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="https://syui.github.io/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">Categories</div>
+  </div>
+  <div class="list-group">
+    
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/categories/blog/index.html">
+        <span class="badge">46</span>
+        blog
+      </a>
+    
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/categories/tips/index.html">
+        <span class="badge">4</span>
+        tips
+      </a>
+    
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/categories/hack/index.html">
+        <span class="badge">130</span>
+        hack
+      </a>
+    
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/categories/private/index.html">
+        <span class="badge">45</span>
+        private
+      </a>
+    
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/categories/music/index.html">
+        <span class="badge">22</span>
+        music
+      </a>
+    
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/categories/anime/index.html">
+        <span class="badge">13</span>
+        anime
+      </a>
+    
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/categories/comic/index.html">
+        <span class="badge">4</span>
+        comic
+      </a>
+    
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/categories/lang/index.html">
+        <span class="badge">3</span>
+        lang
+      </a>
+    
+    
+    <a class="list-group-item " href="https://syui.github.io/blog/categories/security/index.html">
+        <span class="badge">1</span>
+        security
+      </a>
+    
+  </div>
+</section>
+<section class="panel panel-default">
+  <div class="panel-heading">
+    <div class="panel-title">Tag Cloud</div>
+  </div>
+
+    <div class="panel-tag-cloud">
+    <span id="tag-cloud"><a href='https://syui.github.io/blog/tags/0day' style='font-size: 101.875%'>0day(1)</a> <a href='https://syui.github.io/blog/tags/account' style='font-size: 101.875%'>account(1)</a> <a href='https://syui.github.io/blog/tags/aircrack-ng' style='font-size: 101.875%'>aircrack-ng(1)</a> <a href='https://syui.github.io/blog/tags/aldnoah' style='font-size: 101.875%'>aldnoah(1)</a> <a href='https://syui.github.io/blog/tags/amazon' style='font-size: 105.625%'>amazon(3)</a> <a href='https://syui.github.io/blog/tags/android' style='font-size: 130.0%'>android(16)</a> <a href='https://syui.github.io/blog/tags/android' style='font-size: 103.75%'>android,(2)</a> <a href='https://syui.github.io/blog/tags/anime' style='font-size: 113.125%'>anime(7)</a> <a href='https://syui.github.io/blog/tags/api' style='font-size: 103.75%'>api(2)</a> <a href='https://syui.github.io/blog/tags/apple' style='font-size: 105.625%'>apple(3)</a> <a href='https://syui.github.io/blog/tags/applescript' style='font-size: 111.25%'>applescript(6)</a> <a href='https://syui.github.io/blog/tags/application' style='font-size: 105.625%'>application(3)</a> <a href='https://syui.github.io/blog/tags/arch' style='font-size: 158.125%'>arch(31)</a> <a href='https://syui.github.io/blog/tags/archlinux' style='font-size: 116.875%'>archlinux(9)</a> <a href='https://syui.github.io/blog/tags/au' style='font-size: 101.875%'>au(1)</a> <a href='https://syui.github.io/blog/tags/audio' style='font-size: 105.625%'>audio(3)</a> <a href='https://syui.github.io/blog/tags/awesome' style='font-size: 101.875%'>awesome(1)</a> <a href='https://syui.github.io/blog/tags/bag' style='font-size: 103.75%'>bag(2)</a> <a href='https://syui.github.io/blog/tags/battery' style='font-size: 103.75%'>battery(2)</a> <a href='https://syui.github.io/blog/tags/bitbucket' style='font-size: 101.875%'>bitbucket(1)</a> <a href='https://syui.github.io/blog/tags/blackarch' style='font-size: 101.875%'>blackarch(1)</a> <a href='https://syui.github.io/blog/tags/blackbullet' style='font-size: 101.875%'>black・bullet(1)</a> <a href='https://syui.github.io/blog/tags/bluetooth' style='font-size: 103.75%'>bluetooth(2)</a> <a href='https://syui.github.io/blog/tags/book' style='font-size: 103.75%'>book(2)</a> <a href='https://syui.github.io/blog/tags/bootstrap' style='font-size: 105.625%'>bootstrap(3)</a> <a href='https://syui.github.io/blog/tags/bower' style='font-size: 103.75%'>bower(2)</a> <a href='https://syui.github.io/blog/tags/build' style='font-size: 101.875%'>build(1)</a> <a href='https://syui.github.io/blog/tags/button' style='font-size: 101.875%'>button(1)</a> <a href='https://syui.github.io/blog/tags/cdr' style='font-size: 101.875%'>cdr(1)</a> <a href='https://syui.github.io/blog/tags/chat' style='font-size: 101.875%'>chat(1)</a> <a href='https://syui.github.io/blog/tags/chrome' style='font-size: 107.5%'>chrome(4)</a> <a href='https://syui.github.io/blog/tags/cli' style='font-size: 109.375%'>cli(5)</a> <a href='https://syui.github.io/blog/tags/clipboard' style='font-size: 101.875%'>clipboard(1)</a> <a href='https://syui.github.io/blog/tags/comic' style='font-size: 105.625%'>comic(3)</a> <a href='https://syui.github.io/blog/tags/command' style='font-size: 101.875%'>command(1)</a> <a href='https://syui.github.io/blog/tags/conan' style='font-size: 101.875%'>conan(1)</a> <a href='https://syui.github.io/blog/tags/coreos' style='font-size: 103.75%'>coreos(2)</a> <a href='https://syui.github.io/blog/tags/css' style='font-size: 118.75%'>css(10)</a> <a href='https://syui.github.io/blog/tags/dns' style='font-size: 103.75%'>dns(2)</a> <a href='https://syui.github.io/blog/tags/docker' style='font-size: 107.5%'>docker(4)</a> <a href='https://syui.github.io/blog/tags/docomo' style='font-size: 103.75%'>docomo(2)</a> <a href='https://syui.github.io/blog/tags/domain' style='font-size: 103.75%'>domain(2)</a> <a href='https://syui.github.io/blog/tags/dotfile' style='font-size: 101.875%'>dotfile(1)</a> <a href='https://syui.github.io/blog/tags/dtm' style='font-size: 101.875%'>dtm(1)</a> <a href='https://syui.github.io/blog/tags/editor' style='font-size: 103.75%'>editor(2)</a> <a href='https://syui.github.io/blog/tags/elixir' style='font-size: 103.75%'>elixir(2)</a> <a href='https://syui.github.io/blog/tags/error' style='font-size: 101.875%'>error(1)</a> <a href='https://syui.github.io/blog/tags/feedly' style='font-size: 101.875%'>feedly(1)</a> <a href='https://syui.github.io/blog/tags/filemanager' style='font-size: 101.875%'>filemanager(1)</a> <a href='https://syui.github.io/blog/tags/font' style='font-size: 101.875%'>font(1)</a> <a href='https://syui.github.io/blog/tags/fuctory-unlock' style='font-size: 101.875%'>fuctory-unlock(1)</a> <a href='https://syui.github.io/blog/tags/game' style='font-size: 109.375%'>game(5)</a> <a href='https://syui.github.io/blog/tags/gist' style='font-size: 101.875%'>gist(1)</a> <a href='https://syui.github.io/blog/tags/git' style='font-size: 111.25%'>git(6)</a> <a href='https://syui.github.io/blog/tags/github' style='font-size: 160.0%'>github(32)</a> <a href='https://syui.github.io/blog/tags/go' style='font-size: 101.875%'>go(1)</a> <a href='https://syui.github.io/blog/tags/golang' style='font-size: 111.25%'>golang(6)</a> <a href='https://syui.github.io/blog/tags/google' style='font-size: 113.125%'>google(7)</a> <a href='https://syui.github.io/blog/tags/hack' style='font-size: 101.875%'>hack(1)</a> <a href='https://syui.github.io/blog/tags/hatena' style='font-size: 101.875%'>hatena(1)</a> <a href='https://syui.github.io/blog/tags/hexo' style='font-size: 101.875%'>hexo(1)</a> <a href='https://syui.github.io/blog/tags/html' style='font-size: 116.875%'>html(9)</a> <a href='https://syui.github.io/blog/tags/hubot' style='font-size: 101.875%'>hubot(1)</a> <a href='https://syui.github.io/blog/tags/hugo' style='font-size: 103.75%'>hugo(2)</a> <a href='https://syui.github.io/blog/tags/icon' style='font-size: 103.75%'>icon(2)</a> <a href='https://syui.github.io/blog/tags/iesd' style='font-size: 101.875%'>iesd(1)</a> <a href='https://syui.github.io/blog/tags/iij' style='font-size: 101.875%'>iij(1)</a> <a href='https://syui.github.io/blog/tags/illust' style='font-size: 101.875%'>illust(1)</a> <a href='https://syui.github.io/blog/tags/imagemagick' style='font-size: 101.875%'>imagemagick(1)</a> <a href='https://syui.github.io/blog/tags/imotyo' style='font-size: 101.875%'>imotyo(1)</a> <a href='https://syui.github.io/blog/tags/indent' style='font-size: 101.875%'>indent(1)</a> <a href='https://syui.github.io/blog/tags/ios' style='font-size: 107.5%'>ios(4)</a> <a href='https://syui.github.io/blog/tags/iphone' style='font-size: 109.375%'>iphone(5)</a> <a href='https://syui.github.io/blog/tags/irc' style='font-size: 101.875%'>irc(1)</a> <a href='https://syui.github.io/blog/tags/items' style='font-size: 101.875%'>items(1)</a> <a href='https://syui.github.io/blog/tags/javascript' style='font-size: 105.625%'>javascript(3)</a> <a href='https://syui.github.io/blog/tags/jekyll' style='font-size: 107.5%'>jekyll(4)</a> <a href='https://syui.github.io/blog/tags/jockerscript' style='font-size: 101.875%'>jockerscript(1)</a> <a href='https://syui.github.io/blog/tags/json' style='font-size: 101.875%'>json(1)</a> <a href='https://syui.github.io/blog/tags/julius' style='font-size: 101.875%'>julius(1)</a> <a href='https://syui.github.io/blog/tags/kail' style='font-size: 101.875%'>kail(1)</a> <a href='https://syui.github.io/blog/tags/karabiner' style='font-size: 101.875%'>karabiner(1)</a> <a href='https://syui.github.io/blog/tags/libnotify' style='font-size: 101.875%'>libnotify(1)</a> <a href='https://syui.github.io/blog/tags/life' style='font-size: 101.875%'>life(1)</a> <a href='https://syui.github.io/blog/tags/lingr' style='font-size: 101.875%'>lingr(1)</a> <a href='https://syui.github.io/blog/tags/linux' style='font-size: 139.375%'>linux(21)</a> <a href='https://syui.github.io/blog/tags/mac' style='font-size: 150.625%'>mac(27)</a> <a href='https://syui.github.io/blog/tags/macbook' style='font-size: 109.375%'>macbook(5)</a> <a href='https://syui.github.io/blog/tags/manjaro' style='font-size: 107.5%'>manjaro(4)</a> <a href='https://syui.github.io/blog/tags/markdown' style='font-size: 101.875%'>markdown(1)</a> <a href='https://syui.github.io/blog/tags/mavericks' style='font-size: 101.875%'>mavericks(1)</a> <a href='https://syui.github.io/blog/tags/metatrader' style='font-size: 101.875%'>metatrader(1)</a> <a href='https://syui.github.io/blog/tags/metatrader4' style='font-size: 101.875%'>metatrader4(1)</a> <a href='https://syui.github.io/blog/tags/middleman' style='font-size: 116.875%'>middleman(9)</a> <a href='https://syui.github.io/blog/tags/middleman' style='font-size: 101.875%'>middleman,(1)</a> <a href='https://syui.github.io/blog/tags/miku' style='font-size: 111.25%'>miku(6)</a> <a href='https://syui.github.io/blog/tags/mithril' style='font-size: 101.875%'>mithril(1)</a> <a href='https://syui.github.io/blog/tags/mmd' style='font-size: 103.75%'>mmd(2)</a> <a href='https://syui.github.io/blog/tags/mmm' style='font-size: 103.75%'>mmm(2)</a> <a href='https://syui.github.io/blog/tags/mplayer' style='font-size: 101.875%'>mplayer(1)</a> <a href='https://syui.github.io/blog/tags/msys' style='font-size: 101.875%'>msys(1)</a> <a href='https://syui.github.io/blog/tags/music' style='font-size: 101.875%'>music(1)</a> <a href='https://syui.github.io/blog/tags/nasne' style='font-size: 101.875%'>nasne(1)</a> <a href='https://syui.github.io/blog/tags/network' style='font-size: 101.875%'>network(1)</a> <a href='https://syui.github.io/blog/tags/nexus' style='font-size: 101.875%'>nexus(1)</a> <a href='https://syui.github.io/blog/tags/node' style='font-size: 103.75%'>node(2)</a> <a href='https://syui.github.io/blog/tags/node-dot-js' style='font-size: 103.75%'>node.js(2)</a> <a href='https://syui.github.io/blog/tags/notify' style='font-size: 101.875%'>notify(1)</a> <a href='https://syui.github.io/blog/tags/novel' style='font-size: 101.875%'>novel(1)</a> <a href='https://syui.github.io/blog/tags/octopress' style='font-size: 160.0%'>octopress(32)</a> <a href='https://syui.github.io/blog/tags/openssh' style='font-size: 101.875%'>openssh(1)</a> <a href='https://syui.github.io/blog/tags/package' style='font-size: 101.875%'>package(1)</a> <a href='https://syui.github.io/blog/tags/pacman' style='font-size: 101.875%'>pacman(1)</a> <a href='https://syui.github.io/blog/tags/particles' style='font-size: 101.875%'>particles(1)</a> <a href='https://syui.github.io/blog/tags/peco' style='font-size: 101.875%'>peco(1)</a> <a href='https://syui.github.io/blog/tags/phoenix' style='font-size: 103.75%'>phoenix(2)</a> <a href='https://syui.github.io/blog/tags/photo' style='font-size: 101.875%'>photo(1)</a> <a href='https://syui.github.io/blog/tags/plugin' style='font-size: 105.625%'>plugin(3)</a> <a href='https://syui.github.io/blog/tags/powershell' style='font-size: 101.875%'>powershell(1)</a> <a href='https://syui.github.io/blog/tags/private' style='font-size: 105.625%'>private(3)</a> <a href='https://syui.github.io/blog/tags/proxy' style='font-size: 101.875%'>proxy(1)</a> <a href='https://syui.github.io/blog/tags/psp' style='font-size: 101.875%'>psp(1)</a> <a href='https://syui.github.io/blog/tags/python' style='font-size: 105.625%'>python(3)</a> <a href='https://syui.github.io/blog/tags/qiita' style='font-size: 101.875%'>qiita(1)</a> <a href='https://syui.github.io/blog/tags/rails' style='font-size: 101.875%'>rails(1)</a> <a href='https://syui.github.io/blog/tags/rocket' style='font-size: 101.875%'>rocket(1)</a> <a href='https://syui.github.io/blog/tags/root' style='font-size: 115.0%'>root(8)</a> <a href='https://syui.github.io/blog/tags/ruby' style='font-size: 105.625%'>ruby(3)</a> <a href='https://syui.github.io/blog/tags/safari' style='font-size: 101.875%'>safari(1)</a> <a href='https://syui.github.io/blog/tags/sass' style='font-size: 101.875%'>sass,(1)</a> <a href='https://syui.github.io/blog/tags/screen' style='font-size: 101.875%'>screen(1)</a> <a href='https://syui.github.io/blog/tags/security' style='font-size: 101.875%'>security(1)</a> <a href='https://syui.github.io/blog/tags/shell' style='font-size: 115.0%'>shell(8)</a> <a href='https://syui.github.io/blog/tags/shellscirpt' style='font-size: 101.875%'>shellscirpt(1)</a> <a href='https://syui.github.io/blog/tags/shellscript' style='font-size: 111.25%'>shellscript(6)</a> <a href='https://syui.github.io/blog/tags/sim' style='font-size: 103.75%'>sim(2)</a> <a href='https://syui.github.io/blog/tags/slack' style='font-size: 101.875%'>slack(1)</a> <a href='https://syui.github.io/blog/tags/slim' style='font-size: 101.875%'>slim(1)</a> <a href='https://syui.github.io/blog/tags/slim' style='font-size: 101.875%'>slim,(1)</a> <a href='https://syui.github.io/blog/tags/sns' style='font-size: 107.5%'>sns(4)</a> <a href='https://syui.github.io/blog/tags/sony' style='font-size: 101.875%'>sony(1)</a> <a href='https://syui.github.io/blog/tags/speed' style='font-size: 101.875%'>speed(1)</a> <a href='https://syui.github.io/blog/tags/ssh' style='font-size: 101.875%'>ssh(1)</a> <a href='https://syui.github.io/blog/tags/sudo' style='font-size: 101.875%'>sudo(1)</a> <a href='https://syui.github.io/blog/tags/tag' style='font-size: 101.875%'>tag(1)</a> <a href='https://syui.github.io/blog/tags/tails' style='font-size: 101.875%'>tails(1)</a> <a href='https://syui.github.io/blog/tags/template' style='font-size: 103.75%'>template(2)</a> <a href='https://syui.github.io/blog/tags/terminal' style='font-size: 103.75%'>terminal(2)</a> <a href='https://syui.github.io/blog/tags/tips' style='font-size: 101.875%'>tips(1)</a> <a href='https://syui.github.io/blog/tags/tmux' style='font-size: 101.875%'>tmux(1)</a> <a href='https://syui.github.io/blog/tags/tool' style='font-size: 105.625%'>tool(3)</a> <a href='https://syui.github.io/blog/tags/tor' style='font-size: 111.25%'>tor(6)</a> <a href='https://syui.github.io/blog/tags/torne' style='font-size: 101.875%'>torne(1)</a> <a href='https://syui.github.io/blog/tags/touchpad' style='font-size: 103.75%'>touchpad(2)</a> <a href='https://syui.github.io/blog/tags/tty' style='font-size: 101.875%'>tty(1)</a> <a href='https://syui.github.io/blog/tags/tv' style='font-size: 101.875%'>tv(1)</a> <a href='https://syui.github.io/blog/tags/twitter' style='font-size: 101.875%'>twitter(1)</a> <a href='https://syui.github.io/blog/tags/tyranobuilder' style='font-size: 101.875%'>tyranobuilder(1)</a> <a href='https://syui.github.io/blog/tags/tyranoscript' style='font-size: 101.875%'>tyranoscript(1)</a> <a href='https://syui.github.io/blog/tags/unity' style='font-size: 103.75%'>unity(2)</a> <a href='https://syui.github.io/blog/tags/usb' style='font-size: 101.875%'>usb(1)</a> <a href='https://syui.github.io/blog/tags/vagrant' style='font-size: 103.75%'>vagrant(2)</a> <a href='https://syui.github.io/blog/tags/video' style='font-size: 105.625%'>video(3)</a> <a href='https://syui.github.io/blog/tags/vim' style='font-size: 126.25%'>vim(14)</a> <a href='https://syui.github.io/blog/tags/vita' style='font-size: 103.75%'>vita(2)</a> <a href='https://syui.github.io/blog/tags/vmd' style='font-size: 101.875%'>vmd(1)</a> <a href='https://syui.github.io/blog/tags/vnc' style='font-size: 101.875%'>vnc(1)</a> <a href='https://syui.github.io/blog/tags/vocaloid' style='font-size: 139.375%'>vocaloid(21)</a> <a href='https://syui.github.io/blog/tags/vpn' style='font-size: 101.875%'>vpn(1)</a> <a href='https://syui.github.io/blog/tags/web' style='font-size: 105.625%'>web(3)</a> <a href='https://syui.github.io/blog/tags/web-framework' style='font-size: 101.875%'>web-framework(1)</a> <a href='https://syui.github.io/blog/tags/web-scraping' style='font-size: 101.875%'>web-scraping(1)</a> <a href='https://syui.github.io/blog/tags/weechat' style='font-size: 101.875%'>weechat(1)</a> <a href='https://syui.github.io/blog/tags/wercker' style='font-size: 105.625%'>wercker(3)</a> <a href='https://syui.github.io/blog/tags/widget' style='font-size: 101.875%'>widget(1)</a> <a href='https://syui.github.io/blog/tags/windows' style='font-size: 103.75%'>windows(2)</a> <a href='https://syui.github.io/blog/tags/windows' style='font-size: 101.875%'>windows,(1)</a> <a href='https://syui.github.io/blog/tags/wine' style='font-size: 103.75%'>wine(2)</a> <a href='https://syui.github.io/blog/tags/winetricks' style='font-size: 101.875%'>winetricks(1)</a> <a href='https://syui.github.io/blog/tags/x' style='font-size: 101.875%'>x(1)</a> <a href='https://syui.github.io/blog/tags/xbindkeys' style='font-size: 103.75%'>xbindkeys(2)</a> <a href='https://syui.github.io/blog/tags/yahoo' style='font-size: 101.875%'>yahoo(1)</a> <a href='https://syui.github.io/blog/tags/yosemite' style='font-size: 103.75%'>yosemite(2)</a> <a href='https://syui.github.io/blog/tags/zankyou' style='font-size: 101.875%'>zankyou(1)</a> <a href='https://syui.github.io/blog/tags/zaw' style='font-size: 101.875%'>zaw(1)</a> <a href='https://syui.github.io/blog/tags/zsh' style='font-size: 133.75%'>zsh(18)</a> </span>
+    </div>
+</section>
+<section>
+  <h4>About Me</h4>
+  <a href="http://syui.github.io/about/"><img src="https://syui.github.io/images/profile.png" alt="phoenix_world" width="77" height="77" align="left"/></a><a href="http://syui.github.io/about/">syui</a><br/>
+<p>ブログをはじめました。よろしくお願いします。</p>
+</section>
+
+
+
+    
+  </aside>
+  
+</div>
+
+<div class='mobile-footer-up'><a href='#top'><span class="mega-octicon octicon-chevron-up"></span></a></div>
+
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo"><div class="container">
+    
+<p class="text-muted credits">
+  Copyright &copy; 2014-2016 syui.<br>
+  <small>
+      <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>,
+      <span class="credit">customized with <a href="https://github.com/syui/syui.github.io/tree/theme">octoair</a></span>
+  </small>
+</p>
+
+</div>
+</footer>
+    <script src="https://syui.github.io/assets/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="https://syui.github.io/javascripts/modernizr-2.0.js"></script>
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'mbahack2';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'https://syui.github.io/blog/2014/12/29/severe-private/';
+        var disqus_url = 'https://syui.github.io/blog/2014/12/29/severe-private/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+

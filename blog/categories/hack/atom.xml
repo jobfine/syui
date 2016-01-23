@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: hack | MBA-HACK2]]></title>
+  <link href="https://syui.github.io/blog/categories/hack/atom.xml" rel="self"/>
+  <link href="https://syui.github.io/"/>
+  <updated>2016-01-23T02:29:16+00:00</updated>
+  <id>https://syui.github.io/</id>
+  <author>
+    <name><![CDATA[syui]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[archlinux-docker-wine]]></title>
+    <link href="https://syui.github.io/blog/2016/01/23/archlinux-docker-wine/"/>
+    <updated>2016-01-23T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2016/01/23/archlinux-docker-wine</id>
+    <content type="html"><![CDATA[<p><img src="/images/more.png" alt="phoenix-power" align="left" width="100" height="100">最近、Wineを使うことが多くなった気がするので、どんな感じで使ってるかのメモ。<!--more--><br clear="all"></p>
+
+<p>MT4とかその他のアプリもそうだけど、LinuxでWindowsアプリを動かしたいことがあります。そんな時は、Wineで動かして、VNCやSSHで接続するのですが(ほとんど外部サーバーで動かしてるので)、Docker Imageも使います。</p>
+
+<p><figure class='code'><figcaption><span>Host:ArchLinux </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sudo pacman -S docker lxc openssh&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>docker -v&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>sudo cp /usr/lib/systemd/system/docker.service /etc/systemd/system/docker.service&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>sudo mkdir -p /etc/systemd/system/docker.service.d/&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>sudo vim /etc/systemd/system/docker.service.d/lxc.conf
+</span><span class='line'><span class="o">[</span>Service<span class="o">]</span>
+</span><span class='line'><span class="nv">ExecStart</span><span class="o">=</span>
+</span><span class='line'><span class="nv">ExecStart</span><span class="o">=</span>/usr/bin/docker -d -e lxc&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>sudo vim /etc/ssh/sshd_config
+</span><span class='line'>AllowAgentForwarding yes
+</span><span class='line'>AllowTcpForwarding yes
+</span><span class='line'>GatewayPorts no
+</span><span class='line'>X11Forwarding yes
+</span><span class='line'>X11DisplayOffset 10
+</span><span class='line'>X11UseLocalhost yes&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>sudo systemctl start docker
+</span><span class='line'><span class="nv">$ </span>sudo systemctl start sshd
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>で、<code>Dockerfile</code>を書いてきます。</p>
+
+<p><figure class='code'><figcaption><span><a href="http://postd.cc/running-gui-apps-with-docker">http://postd.cc/running-gui-apps-with-docker</a> LINK </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>mkdir -p ~/docker/firefox
+</span><span class='line'><span class="nv">$ </span>vim ~/docker/firefox/Dockerfile
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p><figure class='code'><figcaption><span>~/docker/firefox/Dockerfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>FROM ubuntu:14.04&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;RUN apt-get update <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> apt-get install -y firefox&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Replace <span class="m">1000</span> with your user / group id&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;RUN <span class="nb">export </span><span class="nv">uid</span><span class="o">=</span><span class="m">1000</span> <span class="nv">gid</span><span class="o">=</span><span class="m">1000</span> <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> <span class="se">\</span>
+</span><span class='line'>    mkdir -p /home/developer <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> <span class="se">\</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="p">&amp;</span>ldquo<span class="p">;</span>developer:x:<span class="k">${</span><span class="nv">uid</span><span class="k">}</span>:<span class="k">${</span><span class="nv">gid</span><span class="k">}</span>:Developer,,,:/home/developer:/bin/bash<span class="p">&amp;</span>rdquo<span class="p">;</span> &gt;&gt; /etc/passwd <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> <span class="se">\</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="p">&amp;</span>ldquo<span class="p">;</span>developer:x:<span class="k">${</span><span class="nv">uid</span><span class="k">}</span>:<span class="p">&amp;</span>rdquo<span class="p">;</span> &gt;&gt; /etc/group <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> <span class="se">\</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="p">&amp;</span>ldquo<span class="p">;</span>developer <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> NOPASSWD: ALL<span class="p">&amp;</span>rdquo<span class="p">;</span> &gt; /etc/sudoers.d/developer <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> <span class="se">\</span>
+</span><span class='line'>    chmod <span class="m">0440</span> /etc/sudoers.d/developer <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> <span class="se">\</span>
+</span><span class='line'>    chown <span class="k">${</span><span class="nv">uid</span><span class="k">}</span>:<span class="k">${</span><span class="nv">gid</span><span class="k">}</span> -R /home/developer&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;USER developer
+</span><span class='line'>ENV HOME /home/developer
+</span><span class='line'>CMD /usr/bin/firefox
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>これはGUIアプリをDockerから転送するやり方です。</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">cd</span> ~/docker/firefox&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>sudo docker build -t firefox .&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Guest:Ubuntu&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>sudo docker run -ti <span class="p">&amp;</span>ndash<span class="p">;</span>rm <span class="se">\</span>
+</span><span class='line'>    -e <span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span> <span class="se">\</span>
+</span><span class='line'>    -v /tmp/.X11-unix:/tmp/.X11-unix <span class="se">\</span>
+</span><span class='line'>    firefox&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;developer@docker <span class="nv">$ </span>firefox
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>次に、Wine用のコンテナを作ってみます。</p>
+
+<p><figure class='code'><figcaption><span>~/docker/wine/Dockerfile <a href="http://netbuffalo.doorblog.jp/archives/5001669.html">http://netbuffalo.doorblog.jp/archives/5001669.html</a> LINK </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>FROM ubuntu:14.04&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;RUN dpkg <span class="p">&amp;</span>ndash<span class="p">;</span>add-architecture i386
+</span><span class='line'>RUN apt-get update -y
+</span><span class='line'>RUN apt-get install <span class="p">&amp;</span>ndash<span class="p">;</span>no-install-recommends software-properties-common -y
+</span><span class='line'>RUN add-apt-repository -y ppa:ubuntu-wine/ppa
+</span><span class='line'>RUN apt-get update -y
+</span><span class='line'>RUN apt-get install wine1.7 winetricks winbind -y&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+</span><span class='line'>RUN apt-get install language-pack-ja -y <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> update-locale <span class="nv">LANG</span><span class="o">=</span>ja_JP.UTF-8
+</span><span class='line'>RUN apt-get install fonts-takao fonts-takao-gothic fonts-takao-pgothic fonts-takao-mincho
+</span><span class='line'>RUN sed -i -e <span class="p">&amp;</span>rsquo<span class="p">;</span>s/^XKBMODEL<span class="o">=</span><span class="p">&amp;</span>ldquo<span class="p">;</span>pc105<span class="p">&amp;</span>rdquo<span class="p">;</span>/XKBMODEL<span class="o">=</span><span class="p">&amp;</span>ldquo<span class="p">;</span>jp106<span class="p">&amp;</span>rdquo<span class="p">;</span>/g<span class="s1">&#39; /etc/default/keyboard</span>
+</span><span class='line'><span class="s1">RUN sed -i -e &amp;rsquo;s/^XKBLAYOUT=&amp;ldquo;us&amp;rdquo;/XKBLAYOUT=&amp;ldquo;jp&amp;rdquo;/g&#39;</span> /etc/default/keyboard
+</span><span class='line'>RUN apt-get purge software-properties-common -y
+</span><span class='line'>RUN apt-get autoclean -y
+</span><span class='line'>RUN <span class="nb">export </span><span class="nv">uid</span><span class="o">=</span><span class="m">1000</span> <span class="nv">gid</span><span class="o">=</span><span class="m">1000</span> <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> <span class="se">\</span>
+</span><span class='line'>    mkdir -p /home/wineuser <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> <span class="se">\</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="p">&amp;</span>ldquo<span class="p">;</span>wineuser:x:<span class="k">${</span><span class="nv">uid</span><span class="k">}</span>:<span class="k">${</span><span class="nv">gid</span><span class="k">}</span>:Developer,,,:/home/wineuser:/bin/bash<span class="p">&amp;</span>rdquo<span class="p">;</span> &gt;&gt; /etc/passwd <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> <span class="se">\</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="p">&amp;</span>ldquo<span class="p">;</span>wineuser:x:<span class="k">${</span><span class="nv">uid</span><span class="k">}</span>:<span class="p">&amp;</span>rdquo<span class="p">;</span> &gt;&gt; /etc/group <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> <span class="se">\</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="p">&amp;</span>ldquo<span class="p">;</span>wineuser <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> NOPASSWD: ALL<span class="p">&amp;</span>rdquo<span class="p">;</span> &gt; /etc/sudoers.d/wineuser <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> <span class="se">\</span>
+</span><span class='line'>    chmod <span class="m">0440</span> /etc/sudoers.d/wineuser <span class="p">&amp;</span>amp<span class="p">;&amp;</span>amp<span class="p">;</span> <span class="se">\</span>
+</span><span class='line'>    chown <span class="k">${</span><span class="nv">uid</span><span class="k">}</span>:<span class="k">${</span><span class="nv">gid</span><span class="k">}</span> -R /home/wineuser&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;USER wineuser
+</span><span class='line'>ENV HOME /home/wineuser
+</span><span class='line'>ENV LANG ja_JP.UTF-8
+</span><span class='line'>WORKDIR /home/wineuser
+</span><span class='line'>CMD /bin/bash
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>後は同じように、build, runします。</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">cd</span> ~/docker/wine&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>sudo docker build -t wine:base .&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;&lt;code&gt;lxc.network.hwaddr <span class="o">=</span> ac:ac:ac:11:22:33&lt;/code&gt;では、アプリによってハード固有の番号が読み込まれることがあるので便宜上指定します。&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>sudo docker run -ti <span class="p">&amp;</span>ndash<span class="p">;</span>rm <span class="p">&amp;</span>ndash<span class="p">;</span>lxc-conf<span class="o">=</span><span class="p">&amp;</span>ldquo<span class="p">;</span>lxc.network.hwaddr <span class="o">=</span> ac:ac:ac:11:22:33<span class="p">&amp;</span>rdquo<span class="p">;</span> <span class="se">\</span>
+</span><span class='line'>  -e <span class="nv">XMODIFIERS</span><span class="o">=</span><span class="p">&amp;</span>ldquo<span class="p">;</span>@im<span class="o">=</span>fcitx<span class="p">&amp;</span>rdquo<span class="p">;</span> <span class="se">\</span>
+</span><span class='line'>  -e <span class="nv">GTK_IM_MODULE</span><span class="o">=</span>fcitx <span class="se">\</span>
+</span><span class='line'>  -e <span class="nv">QT_IM_MODULE</span><span class="o">=</span>fcitx <span class="se">\</span>
+</span><span class='line'>  -e <span class="nv">XIMPROGRAM</span><span class="o">=</span>fcitx <span class="se">\</span>
+</span><span class='line'>  -e <span class="nv">LC_CTYPE</span><span class="o">=</span>ja_JP.UTF-8 <span class="se">\</span>
+</span><span class='line'>  -e <span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span> -v /tmp/.X11-unix:/tmp/.X11-unix <span class="se">\</span>
+</span><span class='line'>  wine:base&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;wineuser@docker <span class="nv">$ </span>wget &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;http://cdn.line-apps.com/client/win/new/LineInst.exe&quot;</span>&gt;http://cdn.line-apps.com/client/win/new/LineInst.exe&lt;/a&gt;&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h2&gt;wineuser@docker <span class="nv">$ </span>wine LineInst.exe&lt;/h2&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>sudo docker ps
+</span><span class='line'>commitID&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>sudo docker commit <span class="k">${</span><span class="nv">commitID</span><span class="k">}</span> wine:line
+</span><span class='line'><span class="nv">$ </span>sudo docker images
+</span><span class='line'>wine line
+</span><span class='line'>wine base&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span> sudo docker run -ti <span class="p">&amp;</span>ndash<span class="p">;</span>rm <span class="p">&amp;</span>ndash<span class="p">;</span>lxc-conf<span class="o">=</span><span class="p">&amp;</span>ldquo<span class="p">;</span>lxc.network.hwaddr <span class="o">=</span> ac:ac:ac:11:22:33<span class="p">&amp;</span>rdquo<span class="p">;</span> <span class="se">\</span>
+</span><span class='line'>  -e <span class="nv">XMODIFIERS</span><span class="o">=</span><span class="p">&amp;</span>ldquo<span class="p">;</span>@im<span class="o">=</span>fcitx<span class="p">&amp;</span>rdquo<span class="p">;</span> <span class="se">\</span>
+</span><span class='line'>  -e <span class="nv">GTK_IM_MODULE</span><span class="o">=</span>fcitx <span class="se">\</span>
+</span><span class='line'>  -e <span class="nv">QT_IM_MODULE</span><span class="o">=</span>fcitx <span class="se">\</span>
+</span><span class='line'>  -e <span class="nv">XIMPROGRAM</span><span class="o">=</span>fcitx <span class="se">\</span>
+</span><span class='line'>  -e <span class="nv">LC_CTYPE</span><span class="o">=</span>ja_JP.UTF-8 <span class="se">\</span>
+</span><span class='line'>  -e <span class="nv">DISPLAY</span><span class="o">=</span><span class="nv">$DISPLAY</span> -v /tmp/.X11-unix:/tmp/.X11-unix <span class="se">\</span>
+</span><span class='line'>  wine:line
+</span></code></pre></td></tr></table></div></figure></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim-easymotion-v3]]></title>
+    <link href="https://syui.github.io/blog/2016/01/19/vim-easymotion-v3/"/>
+    <updated>2016-01-19T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2016/01/19/vim-easymotion-v3</id>
+    <content type="html"><![CDATA[<p><img src="/images/more.png" alt="phoenix-power" align="left" width="100" height="100"><code>easymotion</code>が新しくなったということで、本格的に運用を考えてみる<!--more--><br clear="all"></p>
+
+<p>この前、キーボードの<code>j</code>が壊れました。自己修理しましたが、自己修理なので、またいつ何時壊れるかわからないし、<code>j</code>のキー入力に違和感が少しだけあります。</p>
+
+<p>そんなこともあり、最近、<code>easymotion</code>を本格的に使って行こうかなと考えています(何度目?)。</p>
+
+<p><a href="https://github.com/easymotion/vim-easymotion">https://github.com/easymotion/vim-easymotion</a></p>
+
+<p>今まで何故使ってなかったのかというと、移動するのに、わざわざモード移行が面倒なのでは?と考え、そこら辺を自動化するスクリプトを書きました。</p>
+
+<p><figure class='code'><figcaption><span>~/.vimrc </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'>nmap <span class="p">&lt;</span>CR<span class="p">&gt;</span> H<span class="p">&lt;</span>Plug<span class="p">&gt;(</span>easymotion<span class="p">-</span><span class="k">j</span><span class="p">)&lt;</span>/<span class="k">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="k">p</span><span class="p">&gt;</span><span class="k">let</span> <span class="k">s</span>:air_get_line <span class="p">=</span> getline<span class="p">(</span>&amp;lsquo;.&amp;rsquo;<span class="p">)</span>
+</span><span class='line'><span class="k">set</span> <span class="nb">updatetime</span><span class="p">=</span><span class="m">5000</span>
+</span><span class='line'><span class="k">let</span> <span class="k">s</span>:<span class="k">count</span> <span class="p">=</span> <span class="m">0</span>
+</span><span class='line'><span class="k">let</span> <span class="k">s</span>:two_count <span class="p">=</span> <span class="m">1</span>
+</span><span class='line'><span class="k">fu</span><span class="p">!</span> <span class="k">s</span>:air_easy_test<span class="p">()</span>
+</span><span class='line'>    <span class="k">if</span> <span class="k">mode</span><span class="p">()</span> <span class="p">==</span> &amp;ldquo;<span class="k">n</span>&amp;rdquo;
+</span><span class='line'>        <span class="k">let</span> <span class="k">s</span>:<span class="k">count</span> <span class="p">+=</span> <span class="m">1</span>
+</span><span class='line'>        <span class="k">let</span> <span class="k">s</span>:air_test_line<span class="p">=</span>getline<span class="p">(</span>&amp;lsquo;.&amp;rsquo;<span class="p">)</span>
+</span><span class='line'>        <span class="k">if</span> <span class="k">s</span>:air_get_line <span class="p">!=</span> <span class="k">s</span>:air_test_line
+</span><span class='line'>            <span class="k">if</span> <span class="k">s</span>:two_count<span class="p">==</span><span class="m">1</span>
+</span><span class='line'>                &amp;ldquo;execute <span class="c">&quot;normal \&lt;Plug&gt;(easymotion-j)&amp;rdquo;</span>
+</span><span class='line'>                <span class="k">call</span> feedkeys<span class="p">(</span>&amp;ldquo;\<span class="p">&lt;</span>CR<span class="p">&gt;</span>&amp;rdquo;<span class="p">)</span>
+</span><span class='line'>                <span class="k">let</span> <span class="k">s</span>:air_get_line<span class="p">=</span>getline<span class="p">(</span>&amp;lsquo;.&amp;rsquo;<span class="p">)</span>
+</span><span class='line'>                <span class="k">let</span> <span class="k">s</span>:two_count <span class="p">=</span> <span class="m">0</span>
+</span><span class='line'>            <span class="k">el</span>
+</span><span class='line'>                <span class="k">let</span> <span class="k">s</span>:two_count <span class="p">=</span> <span class="m">1</span>
+</span><span class='line'>            <span class="k">en</span>
+</span><span class='line'>        <span class="k">en</span>
+</span><span class='line'>    <span class="k">en</span>
+</span><span class='line'><span class="k">endf</span><span class="p">&lt;</span>/<span class="k">p</span><span class="p">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">&lt;</span><span class="k">p</span><span class="p">&gt;</span>aug air_easy_test
+</span><span class='line'>    <span class="k">au</span><span class="p">!</span>
+</span><span class='line'>    <span class="k">au</span> <span class="nb">CursorHold</span><span class="p">,</span><span class="nb">CursorHoldI</span> * <span class="k">call</span> <span class="k">s</span>:air_easy_test<span class="p">()</span>
+</span><span class='line'>aug END
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>一定時間経過後、入力がなければ、<code>CR</code>する設定です。私は、<code>CR</code>に<code>H&lt;Plug&gt;(easymotion-j)</code>を設定してますので、どの行に移動するかの<code>easymotion</code>が発動します。</p>
+
+<p>ちなみに、<code>vim script</code>は書くの久しぶりだし、すごく適当です。</p>
+
+<p>もともとそういう機能があるかもしれませんが、ドキュメント読んでいません。</p>
+
+<p>V3では、ウィンドウ間の移動が出来るようになったとかで、今までほとんど<code>tmux</code>でやってたウィンドウ管理を<code>vim</code>に変更してみようかなと考えています。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[mac-vim-karabiner-japanese-ime]]></title>
+    <link href="https://syui.github.io/blog/2016/01/17/mac-vim-karabiner-japanese-ime/"/>
+    <updated>2016-01-17T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2016/01/17/mac-vim-karabiner-japanese-ime</id>
+    <content type="html"><![CDATA[<p><img src="/images/more.png" alt="phoenix-power" align="left" width="100" height="100">日本語入力をOFFにする方法<!--more--><br clear="all"></p>
+
+<p>何度か取り上げられている方法が上手く行かなかったので、上手くいく方法を載せておきます。基本的には、<code>C-[</code>,<code>Esc</code>,<code>C-j</code>でノーマルモードに移行すると同時に、日本語入力をOFFにする<code>Karabiner</code>の設定です。</p>
+
+<p><figure class='code'><figcaption><span>&ldquo;~/Library/Application Support/Karabiner/private.xml&rdquo; </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="ni">&amp;lt;</span>?xml version=<span class="ni">&amp;ldquo;</span>1.0<span class="ni">&amp;rdquo;</span>?&gt;
+</span><span class='line'><span class="nt">&lt;root&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;list&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;item&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;name&gt;</span>LeaveInsMode with EISUU(Terminal)<span class="nt">&lt;/name&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;identifier&gt;</span>private.app_terminal_esc_with_eisuu<span class="nt">&lt;/identifier&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;only&gt;</span>TERMINAL<span class="nt">&lt;/only&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;autogen&gt;</span><span class="ni">&amp;ndash;</span>KeyToKey<span class="ni">&amp;ndash;</span> KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::JIS_EISUU<span class="nt">&lt;/autogen&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;autogen&gt;</span><span class="ni">&amp;ndash;</span>KeyToKey<span class="ni">&amp;ndash;</span> KeyCode::J, VK_CONTROL, KeyCode::J, VK_CONTROL, KeyCode::JIS_EISUU<span class="nt">&lt;/autogen&gt;</span>
+</span><span class='line'>      <span class="nt">&lt;autogen&gt;</span><span class="ni">&amp;ndash;</span>KeyToKey<span class="ni">&amp;ndash;</span> KeyCode::BRACKET_RIGHT, VK_CONTROL, KeyCode::BRACKET_RIGHT, VK_CONTROL, KeyCode::JIS_EISUU,KeyCode::BRACKET_RIGHT, VK_CONTROL, KeyCode::BRACKET_RIGHT, VK_CONTROL, KeyCode::JIS_EISUU<span class="nt">&lt;/autogen&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/item&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/list&gt;</span>
+</span><span class='line'><span class="nt">&lt;/root&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>なんか動かなくなったり、動いたりということが頻繁に起こるので、このアプリ、いまいちよく分からない。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[wercker-github-branch-build]]></title>
+    <link href="https://syui.github.io/blog/2015/12/18/wercker-github-branch-build/"/>
+    <updated>2015-12-18T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/12/18/wercker-github-branch-build</id>
+    <content type="html"><![CDATA[<p><img src="/images/more.png" alt="phoenix-power" align="left" width="100" height="100">WerckerでGitHubのMaster以外のブランチをBuildして、MasterにDeployする方法<!--more--><br clear="all"></p>
+
+<p>最初は、BitbucketのPrivate RepoからGitHubにDeployしていたのですが、共有のRepositoryを使っている場合は、Branchを利用したほうがやりやすいので。</p>
+
+<p><code>Hugo</code>のWercker用のDeployにScriptがあるんですが、何かとできないこと多いので、以下の様な感じになってます。</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">box</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">wercker/default</span>
+</span><span class='line'><span class="l-Scalar-Plain">build</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">steps</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">arjen/hugo-build</span><span class="p-Indicator">:</span>
+</span><span class='line'>                <span class="l-Scalar-Plain">version</span><span class="p-Indicator">:</span> <span class="nl">&amp;ldquo</span><span class="l-Scalar-Plain">;0.14&amp;rdquo;</span>
+</span><span class='line'>                <span class="l-Scalar-Plain">theme</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">hugo-icarus-theme</span>
+</span><span class='line'><span class="l-Scalar-Plain">deploy</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">steps</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Get commit message</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">code</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+</span><span class='line'>          <span class="no">export COMMIT_MSG=$(git log &amp;ndash;pretty=format:&amp;ldquo;%s&amp;rdquo; -1)</span>
+</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Configure git</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">code</span><span class="p-Indicator">:</span> <span class="p-Indicator">|-</span>
+</span><span class='line'>          <span class="no">git config &amp;ndash;global user.email &amp;ldquo;${MAIL_ADDRESS}&amp;rdquo;</span>
+</span><span class='line'>          <span class="no">git config &amp;ndash;global user.name &amp;ldquo;syui&amp;rdquo;</span>
+</span><span class='line'>          <span class="no">rm -rf .git</span>
+</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Deploy to github pages</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">code</span><span class="p-Indicator">:</span> <span class="p-Indicator">|-</span>
+</span><span class='line'>          <span class="no">cd ./public</span>
+</span><span class='line'>          <span class="no">git init</span>
+</span><span class='line'>          <span class="no">git add .</span>
+</span><span class='line'>          <span class="no">git commit -m &amp;ldquo;${COMMIT_MSG}&amp;rdquo;</span>
+</span><span class='line'>          <span class="no">git push -f &lt;a href=&quot;https://$&quot;&gt;https://$&lt;/a&gt;{GITHUB_TOKEN}@github.com/archlinuxjp/archlinuxjp.github.io.git master&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>以下を追加すると、Slackに通知されます。</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'>    <span class="l-Scalar-Plain">after-steps</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">wantedly/pretty-slack-notify</span><span class="p-Indicator">:</span>
+</span><span class='line'>          <span class="l-Scalar-Plain">webhook_url</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">$SLACK_WEBHOOK_URL</span>
+</span><span class='line'>          <span class="l-Scalar-Plain">channel</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">general</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>環境変数は、Privateを設定する感じでWerckerの設定で作成します。</p>
+
+<p>で、この際に、<code>WERCKER_GIT_BRANCH</code>にBranch名を入れます。デフォルトでは、<code>master</code>が設定されています。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[heroku-hubot-slack]]></title>
+    <link href="https://syui.github.io/blog/2015/12/18/hubot-slack/"/>
+    <updated>2015-12-18T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/12/18/hubot-slack</id>
+    <content type="html"><![CDATA[<p><img src="/images/more.png" alt="phoenix-power" align="left" width="100" height="100">SlackでちょっとしたBotを動かしてみました。<!--more--><br clear="all"></p>
+
+<h2>archlinuxjp</h2>
+
+<p>まず、宣伝から。ArckWiki日本版のプロジェクト用にSlackアカウントを作成してみました。日頃からArckWikiを読んでいる人などは是非参加して欲しいと考えています。Botとか設定とかまだ整っていないので、その辺を手伝って欲しい&hellip;。</p>
+
+<p><br>
+<br>
+<a href="http://archlinuxjp-slack.heroku.com/"><img src="http://archlinuxjp-slack.heroku.com/badge.svg"></a>
+<br>
+<a href="http://archlinuxjp-slack.heroku.com/">http://archlinuxjp-slack.heroku.com/</a>
+<br>
+<br></p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;自動招待はslackinを使いました。&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;https://github.com/rauchg/slackin&quot;</span>&gt;https://github.com/rauchg/slackin&lt;/a&gt;&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>npm i -g slackin
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2>hubot-slack</h2>
+
+<p><a href="https://github.com/slackhq/hubot-slack">https://github.com/slackhq/hubot-slack</a></p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;-gはglobal&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>npm i -g hubot hubot-slack yo generator-hubot coffee-script&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;yoでhubotを作成&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>mkdir hellobot
+</span><span class='line'><span class="nv">$ </span><span class="nb">cd </span>hellobot
+</span><span class='line'><span class="nv">$ </span>sudo yo hubot&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;mail addressの削除など&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>vim package.json&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;-Sは<span class="p">&amp;</span>ndash<span class="p">;</span>save&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>npm i hubot-slack -S
+</span><span class='line'><span class="nv">$ </span>ls ./node_modules/hubot-slack
+</span><span class='line'><span class="nv">$ </span>vim Procfile
+</span><span class='line'>web: bin/hubot <span class="p">&amp;</span>ndash<span class="p">;</span>adapter slack&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>./bin/hubot
+</span><span class='line'>hellobot &gt; hellobot ping
+</span><span class='line'>hellobot &gt; PONG
+</span><span class='line'>hellobot &gt; <span class="nb">exit</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;herokuにAppを作成&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>heroku login
+</span><span class='line'><span class="nv">$ </span>heroku create appname&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;appnameはherokuのApp名<span class="o">{</span>&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;https://appname.heroku.com&quot;</span>&gt;https://appname.heroku.com&lt;/a&gt;<span class="o">}</span>になる、既に登録されていたら使えない&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Freeでアドオンのredistogoを追加&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;クレジットカードの登録が必要になります&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>heroku addons:add redistogo:nano&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;FreeではH6/H24の時間休ませなければならず、かつM30呼ばれなければ、Sleepしてしまうので、連続で動かすための設定&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;schedulerアドオンの追加&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>heroku addons:create scheduler:standard&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;schedulerをブラウザで設定&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ BROWSER</span><span class="o">=</span><span class="p">&amp;</span>ldquo<span class="p">;&amp;</span>rdquo<span class="p">;</span>
+</span><span class='line'><span class="nv">$ </span>heroku addons:open scheduler&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;curl <span class="k">${</span><span class="nv">HUBOT_HEROKU_KEEPALIVE_URL</span><span class="k">}</span>heroku/keepalive&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;23:00&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;keepaliveをインストール&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>npm i hubot-heroku-keepalive -S
+</span><span class='line'><span class="nv">$ </span>vim ./external-scripts.json
+</span><span class='line'><span class="o">[</span> <span class="p">&amp;</span>ldquo<span class="p">;</span>hubot-heroku-keepalive<span class="p">&amp;</span>rdquo<span class="p">;</span> <span class="o">]</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;keepaliveの設定&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;https://devcenter.heroku.com/articles/scheduler&quot;</span>&gt;https://devcenter.heroku.com/articles/scheduler&lt;/a&gt;&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>heroku config:add <span class="nv">HUBOT_HEROKU_WAKEUP_TIME</span><span class="o">=</span>8:00
+</span><span class='line'><span class="nv">$ </span>heroku config:add <span class="nv">HUBOT_HEROKU_SLEEP_TIME</span><span class="o">=</span>24:00
+</span><span class='line'><span class="nv">$ </span>heroku config:add <span class="nv">TZ</span><span class="o">=</span><span class="p">&amp;</span>lsquo<span class="p">;</span>Asia/Tokyo<span class="p">&amp;</span>rsquo<span class="p">;</span>
+</span><span class='line'><span class="nv">$ </span>heroku config:set <span class="nv">HUBOT_HEROKU_KEEPALIVE_URL</span><span class="o">=</span><span class="k">$(</span>heroku apps:info -s <span class="p">|</span> grep web-url <span class="p">|</span> cut -d<span class="o">=</span> -f2<span class="k">)</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;process-schedulerアドオンの追加&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;https://devcenter.heroku.com/articles/process-scheduler&quot;</span>&gt;https://devcenter.heroku.com/articles/process-scheduler&lt;/a&gt;&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;これで行けるとは思うけど試してない&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>heroku addons:add process-scheduler:nano
+</span><span class='line'><span class="nv">$ </span>heroku addons:open process-scheduler&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;範囲指定して0を入力するのですが、<span class="s2">&quot;1:00-6:00&quot;</span>で良いと思います。0の時間を寝かせます&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;スケールを最小限にする&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>heroku ps:scale <span class="nv">web</span><span class="o">=</span>1&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;とりあえずherokuにdeploy&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>git init
+</span><span class='line'><span class="nv">$ </span>git commit -m <span class="p">&amp;</span>ldquo<span class="p">;</span>first deploy<span class="p">&amp;</span>rdquo<span class="p">;</span>
+</span><span class='line'><span class="nv">$ </span>git push heroku master&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>curl -sL &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;https://appname.heroku.com/&quot;</span>&gt;https://appname.heroku.com/&lt;/a&gt;
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>ある程度の設定ができましたが、私は、<code>GitHub(Source Code) -&gt; Wercker(Deploy) -&gt; Heroku(App) -&gt; Slack(Bot)</code>と形になってますが、お好みで。</p>
+
+<p><figure class='code'><figcaption><span>wercker.yml </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">box</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">wercker/nodejs</span>
+</span><span class='line'><span class="l-Scalar-Plain">build</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">steps</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">script</span><span class="p-Indicator">:</span>
+</span><span class='line'>         <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">build</span>
+</span><span class='line'>         <span class="l-Scalar-Plain">code</span><span class="p-Indicator">:</span> <span class="p-Indicator">|</span>
+</span><span class='line'>                 <span class="no">ls -a&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">&lt;p&gt;deploy</span><span class="p-Indicator">:</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">steps</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">heroku-deploy</span><span class="p-Indicator">:</span>
+</span><span class='line'>         <span class="l-Scalar-Plain">key</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">$HEROKU_KEY</span>
+</span><span class='line'>         <span class="l-Scalar-Plain">user</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">$HEROKU_USER</span>
+</span><span class='line'>         <span class="l-Scalar-Plain">app-name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">$HEROKU_APP_NAME</span>
+</span><span class='line'>  <span class="l-Scalar-Plain">after-steps</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">wantedly/pretty-slack-notify</span><span class="p-Indicator">:</span>
+</span><span class='line'>         <span class="l-Scalar-Plain">webhook_url</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">$SLACK_WEBHOOK_URL</span>
+</span><span class='line'>         <span class="l-Scalar-Plain">channel</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">general</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p><code>after-steps</code>の部分は、<code>Slack</code>への通知。</p>
+
+<p><img src="https://raw.githubusercontent.com/mba-hack/images/master/slack_sample_02.png" alt="" /></p>
+
+<p><a href="https://github.com/wantedly/step-pretty-slack-notify">https://github.com/wantedly/step-pretty-slack-notify</a></p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'>  <span class="l-Scalar-Plain">after-steps</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">wantedly/pretty-slack-notify</span><span class="p-Indicator">:</span>
+</span><span class='line'>         <span class="l-Scalar-Plain">webhook_url</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">$SLACK_WEBHOOK_URL</span>
+</span><span class='line'>         <span class="l-Scalar-Plain">channel</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">general</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>次に、<code>hubot</code>の基本的な拡張方法について。</p>
+
+<p><code>scripts</code>フォルダにScriptを置きます。</p>
+
+<p><figure class='code'><figcaption><span>scripts/hello.coffee </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">robot</span><span class="p">)</span> <span class="o">-&gt;</span>
+</span><span class='line'>  <span class="nx">robot</span><span class="p">.</span><span class="nx">respond</span> <span class="o">/</span><span class="nx">HELLO$</span><span class="o">/</span><span class="nx">i</span><span class="p">,</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">-&gt;</span>
+</span><span class='line'>    <span class="nx">msg</span><span class="p">.</span><span class="nx">send</span> <span class="o">&amp;</span><span class="nx">ldquo</span><span class="p">;</span><span class="nx">world</span><span class="o">&amp;</span><span class="nx">rdquo</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>./bin/hubot
+</span><span class='line'>hellobot &gt; hellobot hello
+</span><span class='line'>hellobot &gt; world
+</span><span class='line'>hellobot &gt; <span class="nb">exit</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>新しいアプリをインストールして使います。例えば、RSSを流すとして、以下が便利。</p>
+
+<p><a href="https://github.com/shokai/hubot-rss-reader">https://github.com/shokai/hubot-rss-reader</a></p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>npm i hubot-rss-reader -S
+</span><span class='line'><span class="nv">$ </span>vim external-script.json
+</span><span class='line'><span class="o">[</span> <span class="p">&amp;</span>ldquo<span class="p">;</span>hubot-rss-reader<span class="p">&amp;</span>rdquo<span class="p">;</span> <span class="o">]</span>
+</span><span class='line'><span class="nv">$ </span>./bin/hubot
+</span><span class='line'>hellobot &gt; hellobot rss list
+</span><span class='line'>hellobot &gt; hellobot rss add &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;https://qiita.com/tags/docker/feed.atom&quot;</span>&gt;https://qiita.com/tags/docker/feed.atom&lt;/a&gt;
+</span><span class='line'>hellobot &gt; <span class="nb">exit</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>TwitterとかはHerokuに環境変数を追加することで使用可能。アクセストークンとかは、<a href="https://apps.twitter.com/">こちら</a>から。</p>
+
+<p><img src="https://raw.githubusercontent.com/mba-hack/images/master/slack_sample_01.png" alt="" /></p>
+
+<p><a href="https://github.com/estiens/hubot-twitter-mention-v2">https://github.com/estiens/hubot-twitter-mention-v2</a></p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>npm i hubot-twitter-search -S
+</span><span class='line'><span class="nv">$ </span>vim external-scripts.json
+</span><span class='line'><span class="o">[</span> <span class="p">&amp;</span>ldquo<span class="p">;</span>hubot-twitter-search<span class="p">&amp;</span>rdquo<span class="p">;</span> <span class="o">]</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;テスト用&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span><span class="nb">export </span><span class="nv">HUBOT_TWITTER_CONSUMER_KEY</span><span class="o">=</span><span class="p">&amp;</span>lsquo<span class="p">;</span>Your–consumer-key-here<span class="p">&amp;</span>rsquo<span class="p">;</span>
+</span><span class='line'><span class="nv">$ </span><span class="nb">export </span><span class="nv">HUBOT_TWITTER_CONSUMER_SECRET</span><span class="o">=</span><span class="p">&amp;</span>lsquo<span class="p">;</span>Your-consumer-secret-here<span class="p">&amp;</span>rsquo<span class="p">;</span>
+</span><span class='line'><span class="nv">$ </span><span class="nb">export </span><span class="nv">HUBOT_TWITTER_ACCESS_TOKEN_KEY</span><span class="o">=</span><span class="p">&amp;</span>lsquo<span class="p">;</span>Your-access-token-here<span class="p">&amp;</span>rsquo<span class="p">;</span>
+</span><span class='line'><span class="nv">$ </span><span class="nb">export </span><span class="nv">HUBOT_TWITTER_ACCESS_TOKEN_SECRET</span><span class="o">=</span><span class="p">&amp;</span>lsquo<span class="p">;</span>Your-access-token-secret-here<span class="p">&amp;</span>rsquo<span class="p">;</span>
+</span><span class='line'><span class="nv">$ </span><span class="nb">export </span><span class="nv">HUBOT_TWITTER_MENTION_QUERY</span><span class="o">=</span><span class="p">&amp;</span>lsquo<span class="p">;</span>検索キーワード<span class="p">&amp;</span>rsquo<span class="p">;</span>
+</span><span class='line'><span class="nv">$ </span><span class="nb">export </span><span class="nv">HUBOT_TWITTER_MENTION_ROOM</span><span class="o">=</span><span class="p">&amp;</span>lsquo<span class="p">;</span>general<span class="p">&amp;</span>rsquo<span class="p">;</span>
+</span><span class='line'><span class="nv">$ </span>./bin/hubot&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;h1&gt;Heroku用&lt;/h1&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;<span class="nv">$ </span>heroku config:add <span class="nv">HUBOT_TWITTER_CONSUMER_KEY</span><span class="o">=</span><span class="p">&amp;</span>lsquo<span class="p">;</span>Your–consumer-key-here<span class="p">&amp;</span>rsquo<span class="p">;</span>
+</span><span class='line'><span class="nv">$ </span>heroku config:add <span class="nv">HUBOT_TWITTER_CONSUMER_SECRET</span><span class="o">=</span><span class="p">&amp;</span>lsquo<span class="p">;</span>Your-consumer-secret-here<span class="p">&amp;</span>rsquo<span class="p">;</span>
+</span><span class='line'><span class="nv">$ </span>heroku config:add <span class="nv">HUBOT_TWITTER_ACCESS_TOKEN_KEY</span><span class="o">=</span><span class="p">&amp;</span>lsquo<span class="p">;</span>Your-access-token-here<span class="p">&amp;</span>rsquo<span class="p">;</span>
+</span><span class='line'><span class="nv">$ </span>heroku config:add <span class="nv">HUBOT_TWITTER_ACCESS_TOKEN_SECRET</span><span class="o">=</span><span class="p">&amp;</span>lsquo<span class="p">;</span>Your-access-token-secret-here<span class="p">&amp;</span>rsquo<span class="p">;</span>
+</span><span class='line'><span class="nv">$ </span>heroku config:add <span class="nv">HUBOT_TWITTER_MENTION_QUERY</span><span class="o">=</span><span class="p">&amp;</span>lsquo<span class="p">;</span>検索キーワード<span class="p">&amp;</span>rsquo<span class="p">;</span>
+</span><span class='line'><span class="nv">$ </span>heroku config:add <span class="nv">HUBOT_TWITTER_MENTION_ROOM</span><span class="o">=</span><span class="p">&amp;</span>lsquo<span class="p">;</span>general<span class="p">&amp;</span>rsquo<span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+]]></content>
+  </entry>
+  
+</feed>

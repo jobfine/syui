@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[MBA-HACK2]]></title>
+  <link href="https://syui.github.io/atom.xml" rel="self"/>
+  <link href="https://syui.github.io/"/>
+  <updated>2016-01-23T02:29:16+00:00</updated>
+  <id>https://syui.github.io/</id>
+  <author>
+    <name><![CDATA[syui]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[archlinux-docker-wine]]></title>
+    <link href="https://syui.github.io/blog/2016/01/23/archlinux-docker-wine/"/>
+    <updated>2016-01-23T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2016/01/23/archlinux-docker-wine</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">最近、Wineを使うことが多くなった気がするので、どんな感じで使ってるかのメモ。]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[vim-easymotion-v3]]></title>
+    <link href="https://syui.github.io/blog/2016/01/19/vim-easymotion-v3/"/>
+    <updated>2016-01-19T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2016/01/19/vim-easymotion-v3</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100"><code>easymotion</code>が新しくなったということで、本格的に運用を考えてみる]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[mac-vim-karabiner-japanese-ime]]></title>
+    <link href="https://syui.github.io/blog/2016/01/17/mac-vim-karabiner-japanese-ime/"/>
+    <updated>2016-01-17T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2016/01/17/mac-vim-karabiner-japanese-ime</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">日本語入力をOFFにする方法]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[wercker-github-branch-build]]></title>
+    <link href="https://syui.github.io/blog/2015/12/18/wercker-github-branch-build/"/>
+    <updated>2015-12-18T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/12/18/wercker-github-branch-build</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">WerckerでGitHubのMaster以外のブランチをBuildして、MasterにDeployする方法]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[heroku-hubot-slack]]></title>
+    <link href="https://syui.github.io/blog/2015/12/18/hubot-slack/"/>
+    <updated>2015-12-18T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/12/18/hubot-slack</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">SlackでちょっとしたBotを動かしてみました。]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[golang-web-scraping]]></title>
+    <link href="https://syui.github.io/blog/2015/12/07/golang-web-scraping/"/>
+    <updated>2015-12-07T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/12/07/golang-web-scraping</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100"><code>goquery</code>を使った時に、少しハマった話。]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[google-authenticator-yahoo]]></title>
+    <link href="https://syui.github.io/blog/2015/11/22/google-authenticator-yahoo/"/>
+    <updated>2015-11-22T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/11/22/google-authenticator-yahoo</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">Google認証システムが便利。]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[comic-walker-screenshot]]></title>
+    <link href="https://syui.github.io/blog/2015/11/17/comic-walker-screenshot/"/>
+    <updated>2015-11-17T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/11/17/comic-walker-screenshot</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">ComicWalkerで読んでいる漫画]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[mmm-make-video-01]]></title>
+    <link href="https://syui.github.io/blog/2015/11/13/mmm-make-video-01/"/>
+    <updated>2015-11-13T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/11/13/mmm-make-video-01</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">MMMで簡単な動画を作ってみたので、MMMの基本的な使い方を紹介します。]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[mmm-mikumikumoving-appearance-miku]]></title>
+    <link href="https://syui.github.io/blog/2015/11/12/mmm-mikumikumoving-appearance-miku/"/>
+    <updated>2015-11-12T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/11/12/mmm-mikumikumoving-appearance-miku</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">MMMでAppearance Mikuに踊ってもらった。]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[factory-unlock-sim]]></title>
+    <link href="https://syui.github.io/blog/2015/11/07/factory-unlock-sim/"/>
+    <updated>2015-11-07T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/11/07/factory-unlock-sim</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">今回は、SIMロック解除などについて。]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[iij-sim-free-iphone]]></title>
+    <link href="https://syui.github.io/blog/2015/11/03/iij-sim-free/"/>
+    <updated>2015-11-03T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/11/03/iij-sim-free</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">IIJのSIMを運用していくにあたって、参考になりそうなこととか。]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[amazon-bag-grandstone]]></title>
+    <link href="https://syui.github.io/blog/2015/10/31/amazon-bag-grandstone/"/>
+    <updated>2015-10-31T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/10/31/amazon-bag-grandstone</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">私は、バッグはグランド・ストーン(GRAND STONE)製を愛用しているのですが、新色が出てましたので、紹介します。]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[android-mount-exfat-cli]]></title>
+    <link href="https://syui.github.io/blog/2015/10/24/android-mount-exfat-cli/"/>
+    <updated>2015-10-24T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/10/24/android-mount-exfat-cli</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">Android 6.0でexfatのフォーマットディスクがマウントできない時の対処法]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[powershell-openssh-install]]></title>
+    <link href="https://syui.github.io/blog/2015/10/23/powershell-openssh-install/"/>
+    <updated>2015-10-23T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/10/23/powershell-openssh-install</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">PowerShellとOpenSSHの使い方]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[android-stick-mount-exfat]]></title>
+    <link href="https://syui.github.io/blog/2015/10/22/android-stick-mount-exfat/"/>
+    <updated>2015-10-22T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/10/22/android-stick-mount-exfat</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">Android6.0にあげてから、StickMountが思うように動かない。そして、過去どうやって動かしてたのか、忘れてしまった件]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[archlinux-on-android-armv7-latest]]></title>
+    <link href="https://syui.github.io/blog/2015/10/17/archlinux-on-android-am33x-lattest-2/"/>
+    <updated>2015-10-17T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/10/17/archlinux-on-android-am33x-lattest-2</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">今回は、Androidのみを使ってArch Linuxのイメージを展開する方法]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[archlinux-on-android-am33x-latest]]></title>
+    <link href="https://syui.github.io/blog/2015/10/16/archlinux-on-android-am33x-latest/"/>
+    <updated>2015-10-16T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/10/16/archlinux-on-android-am33x-latest</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">今回は、AndroidからChrootする新しいArch Linuxイメージの作成方法です。]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[archlinux-on-android-6.0-customize]]></title>
+    <link href="https://syui.github.io/blog/2015/10/16/archlinux-on-android-6-dot-0-customize/"/>
+    <updated>2015-10-16T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/10/16/archlinux-on-android-6-dot-0-customize</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">ArchLinux On Android 6.0のカスタマイズです。]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[archlinux-on-android6]]></title>
+    <link href="https://syui.github.io/blog/2015/10/15/archlinux-on-android6/"/>
+    <updated>2015-10-15T00:00:00+00:00</updated>
+    <id>https://syui.github.io/blog/2015/10/15/archlinux-on-android6</id>
+    <content type="html"><![CDATA[<p><img src="https://syui.github.io/images/more.png" alt="phoenix-power" align="left" width="100" height="100">Androidをアップデートしたついでに、アプリなどを整理してみましたので、Androidでよく使うアプリなどを紹介します。]]></content>
+  </entry>
+  
+</feed>
